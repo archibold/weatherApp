@@ -77,7 +77,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 4rem 0;
 }
 
 .center::before {
@@ -123,6 +122,23 @@
   .card:hover span {
     transform: none;
   }
+}
+
+.header {
+  font-size: 50px;
+}
+
+@keyframes loading-animation {
+  from {opacity: 0.2;}
+  to {opacity: 1;}
+}
+
+.loading {
+  font-size: 50px;
+  animation-name: loading-animation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* Mobile */
@@ -216,14 +232,5 @@
 
   .logo {
     filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }
