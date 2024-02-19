@@ -5,29 +5,13 @@ export default function GetWeather(): WeatherInterface | null {
     let [weatherData, setWeatherData] = useState<WeatherInterface | null>(null)
 
     useEffect(() => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, handleError);
-        } else {
-        console.log("Geolocation is not supported by this browser.");
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+            console.log("Geolocation is not supported by this browser.");
     }
 
-    function handleError(error: any) {
-        // Display error based on the error code.
-        const { code } = error;
-        switch (code) {
-        case GeolocationPositionError.TIMEOUT:
-            // Handle timeout.
-            break;
-        case GeolocationPositionError.PERMISSION_DENIED:
-            // User denied the request.
-            break;
-        case GeolocationPositionError.POSITION_UNAVAILABLE:
-            // Position not available.
-            break;
-        }
-    }
-
-    function showPosition(position: any) {
+    function showPosition(position: GeolocationPosition) {
         const lat = position.coords.latitude || 0;
         const long = position.coords.longitude || 0;
 
